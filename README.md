@@ -40,4 +40,4 @@ The instructions are:
 The files in this repo include:
 * This README.md file describing the contents of the repo.
 * [CodeBook.md](CodeBook.md) file describes the data that has been manipulated.
-* run_analysis.R file is an R script that prepares the data for further analysis.
+* [run_analysis.R](run_analysis.R) file is an R script that prepares the data for further analysis.
