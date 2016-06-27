@@ -22,7 +22,7 @@ The _test_ and _train_ folders contain the same (similarly named) files and file
 When the 3 above files are read into columns of a data table, you get the subject, the activity and the measurements for each feature in many rows. This file format is identical for the test folder.
 
 ## Data Preparation Script
-The data needs to be preparted for processing. The script _run_analysis.R_ performs this processing. It prepares the data by:
+The data needs to be preparted for processing. The script [_run_analysis.R_](run_analysis.R) performs this processing. It prepares the data by:
 * Reading all the data files into structures.
 * Ensures the feature labels are alphanumeric characters.
 * Reads the data giving the columns human readable names.
