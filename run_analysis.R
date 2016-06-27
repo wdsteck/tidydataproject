@@ -1,3 +1,22 @@
+#
+# run_analysis.R script
+#
+# for more information about this script, see the CodeBook.md in the same folder as this script.
+#
+# This script read raw data and processes it into a data structure that facilitates analysis. It combines
+# the data from several text files into a single data structure with human readable labels and factors
+# that can be used for analysis.
+#
+# The execution of the script assumes that the uncompressed data folder is locted in the same folder as the script.
+#
+
+#
+# readTestData function reads either the test or train folders and combines all the data with human readable
+# labels. The read data structure is returned to the calling function.
+#
+# the subject column is read, the activity column is read and all the feature measurements are read.
+#
+
 readTestData <- function(testOperation) {
         # Read the first column of the test data frame. This contains the subject
         # number of each exercise done.
@@ -69,6 +88,8 @@ testData <- testData[, sort(union(c(1,2),union(grep("mean", colnames(testData)),
 
 print("*** Data Preparation complete. Data in structure called 'testData'.")
 
+# ensure the plyr library is loaded.
+
 if(require("plyr")){
         print("plyr is loaded")
 } else {
@@ -80,7 +101,12 @@ if(require("plyr")){
                 stop("could not install plyr")
         }
 }
-print("Creating the table of means for each column of measures.")
+
+print("Creating the table of means for each subject/activity pair.")
+
+#
+# for each feature, calculate the mean of that feature for each particular subject/activity (exercise) combination.
+#
 
 testData.mean <- ddply(testData, .(testSubject, testExercise), summarize, tBodyAccmeanX=mean(tBodyAccmeanX))
 testData.mean <- merge(testData.mean, ddply(testData, .(testSubject, testExercise), summarize, tBodyAccmeanY = mean(tBodyAccmeanY)), by = c('testSubject', 'testExercise'))
