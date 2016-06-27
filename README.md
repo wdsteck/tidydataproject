@@ -1,4 +1,4 @@
-# tidydataproject
+# Getting and Cleaning Data Class Project
 
 This repo holds the files for my "Getting and Cleaning Data" Coursera class project.
 
